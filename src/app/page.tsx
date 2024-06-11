@@ -15,7 +15,6 @@ export default function Home() {
         await Moralis.start({
           apiKey: process.env.NEXT_PUBLIC_MORALIS_API_KEY,
         });
-        console.log(await getTopTokens());
       } catch (error) {
         console.error("Error initializing Moralis", error);
       }

@@ -15,8 +15,6 @@ export default function TokenPage({ params }: { params: { token: string } }) {
     GetTokenMetadataJSONResponse | undefined
   >();
 
-  console.log("token data", tokenData);
-
   useEffect(() => {
     const fetchTokenData = async () => {
       try {

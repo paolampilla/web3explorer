@@ -12,6 +12,7 @@ export const TopTokensList = () => {
     (async () => {
       try {
         const topTokens = await getTopTokens();
+        console.log("topTokens", topTokens);
         setTokenList(topTokens);
       } catch (error) {
         console.error("Error getting top tokens", error);
@@ -22,11 +23,15 @@ export const TopTokensList = () => {
   return (
     <div className="relative max-h-[100vh] w-full overflow-scroll text-slate-400 px-7 py-2">
       <div className="mt-5">
-        {tokenList ? tokenList.map((token, i) => (
-          <div key={i} className="mb-5">
-            <TopTokensRow topToken={token} />
-          </div>
-        )) : <div className="my-6 text-neutral-400">No data found</div>}
+        {tokenList ? (
+          tokenList.map((token, i) => (
+            <div key={i} className="mb-5">
+              <TopTokensRow topToken={token} />
+            </div>
+          ))
+        ) : (
+          <div className="my-6 text-neutral-400">No data found</div>
+        )}
       </div>
     </div>
   );

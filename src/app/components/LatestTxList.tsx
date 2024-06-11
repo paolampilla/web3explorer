@@ -15,7 +15,6 @@ export const LatestTxList = () => {
     (async () => {
       try {
         const block: Block = await publicClient.getBlock();
-        console.log("block.transactions", block.transactions);
         setBlockEvents(block);
       } catch (error) {
         console.error("Error getting block", error);

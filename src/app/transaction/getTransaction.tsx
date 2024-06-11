@@ -11,7 +11,6 @@ export const getTransaction = async ({
       transactionHash: transactionHash.toLowerCase(),
     });
     const data = r?.toJSON();
-    console.log("transaction data", data);
     return data;
   } catch (e) {
     console.error(e);
