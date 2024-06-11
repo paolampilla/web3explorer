@@ -15,8 +15,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={GeistSans.className}>
-      <body className="bg-gradient-to-br from-neutral-900 to-neutral-950">
-        <div className="flex flex-col align-middle justify-center w-[85%] mx-auto h-64">
+      <body className="bg-[#000]">
+        <div className="flex flex-col align-middle justify-center w-[85%] mx-auto h-96">
           <SearchSection />
         </div>
         {children}

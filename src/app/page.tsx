@@ -22,9 +22,9 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 w-[100vw] gap-8 items-center flex-col justify-between font-mono text-sm lg:flex">
-        <div className="grid-cols-2 flex align-middle justify-center items-center grid">
+    <main className="flex min-h-screen flex-col items-center justify-between py-10">
+      <div className="z-10 gap-3 w-[85%] items-center flex-col justify-between font-mono text-sm lg:flex">
+        <div className=" flex md:flex-row xxs:flex-col w-full align-middle justify-center items-center gap-10">
           <TopTokensSection />
           <TopTokensSection />
         </div>

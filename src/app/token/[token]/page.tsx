@@ -1,22 +1,28 @@
 "use client";
 import { getToken } from "@/app/token/getToken";
 import Image from "next/image";
-import { GetTokenMetadataJSONResponse } from "@moralisweb3/common-evm-utils";
+import {
+  GetTokenMetadataJSONResponse,
+  GetTokenTransfersJSONResponse,
+} from "@moralisweb3/common-evm-utils";
 import { useEffect, useState } from "react";
 import Moralis from "moralis";
+import { getTokenTransaction } from "@/app/token/getTokenTransactions";
+import TokenTransfersSection from "@/app/token/TokenTransfersSection";
 
 export default function TokenPage({ params }: { params: { token: string } }) {
   const [tokenData, setTokenData] = useState<
     GetTokenMetadataJSONResponse | undefined
   >();
 
+  console.log("token data", tokenData);
+
   useEffect(() => {
     const fetchTokenData = async () => {
       try {
-        await Moralis.start({
-          apiKey: process.env.NEXT_PUBLIC_MORALIS_API_KEY,
+        const token = await getToken({
+          addressHash: params.token.toLowerCase(),
         });
-        const token = await getToken({ addressHash: params.token });
         setTokenData(token);
       } catch (error) {
         console.error("Error getting tokens", error);
@@ -27,25 +33,32 @@ export default function TokenPage({ params }: { params: { token: string } }) {
   }, [params]);
 
   return (
-    <div>
-      <h1>Token Details:</h1>
-      {tokenData && tokenData.length > 0 ? (
-        tokenData.map((token, i) => (
-          <div key={i}>
-            <Image
-              width={100}
-              height={100}
-              src={token.thumbnail || ""}
-              alt={`Logo of ${token?.symbol}`}
-            />
-            <div>Token Name: {token.name}</div>
-            <div>Decimals: {token.decimals}</div>
-            <div>Verified: {token.verified_contract}</div>
-          </div>
-        ))
-      ) : (
-        <div>No token data available.</div>
-      )}
+    <div className="rounded rounded-xl font-light text-gray-300 bg-[#0A0A0A] border w-[85%] mt-10 m-auto border-[#2c2d2d]">
+      <div className="p-16 gap-4 flex flex-col">
+        {tokenData && tokenData.length > 0 ? (
+          tokenData.map((token, i) => (
+            <>
+              <div className="gap-4 flex flex-col" key={i}>
+                <h1 className="text-2xl font-normal text-gray-200">
+                  {token.address_label}
+                </h1>
+                <Image
+                  width={50}
+                  height={50}
+                  src={token.thumbnail || ""}
+                  alt={`Logo of ${token?.symbol}`}
+                />
+                <div className="font-medium">{token.name}</div>
+                <div>Address: {token.address}</div>
+                <div>Decimals: {token.decimals}</div>
+              </div>
+              <TokenTransfersSection address={token.address} />
+            </>
+          ))
+        ) : (
+          <div>No token data available.</div>
+        )}
+      </div>
     </div>
   );
 }

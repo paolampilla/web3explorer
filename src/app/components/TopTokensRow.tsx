@@ -7,7 +7,7 @@ export const TopTokensRow = ({
   topToken: EvmMarketDataERC20TokenItemJSON;
 }) => {
   return (
-    <div className="flex items-center grid gap-4 grid-cols-5 p-3 bg-slate-700 shadow-[inset_0px_1px_0px_0_rgba(255,255,255,0.10)] rounded rounded-lg text-gray-300">
+    <div className="flex items-center grid gap-4 grid-cols-6 p-3 ring ring-1 bg-[#0A0A0A] ring-[#2c2d2d] rounded rounded-lg text-gray-300">
       <Image
         width={30}
         height={30}
@@ -16,9 +16,9 @@ export const TopTokensRow = ({
         className=""
       />
       <div>{topToken.token_symbol}</div>
-      <div>{topToken.token_name}</div>
-      <div>${topToken.price_usd}</div>
-      <div>{topToken.price_24h_percent_change} %</div>
+      <div className="col-start-3 col-end-5">{topToken.token_name}</div>
+      <div>${Number(topToken.price_usd).toFixed(2)}</div>
+      <div>{Number(topToken.price_24h_percent_change).toFixed(2)} %</div>
     </div>
   );
 };

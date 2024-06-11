@@ -15,7 +15,7 @@ export const SearchButton = ({ searchHash }: { searchHash: string }) => {
   }
 
   return (
-    <button className="cursor-pointer h-full pr-10 bg-neutral-800 bg-opacity-30" onClick={handleClick}>
+    <button className="cursor-pointer h-full pr-10" onClick={handleClick}>
       <MagnifyingGlassIcon width={30} height={30} className="opacity-60" />
     </button>
   );

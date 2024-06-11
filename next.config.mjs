@@ -8,6 +8,10 @@ const nextConfig = {
         },{
           protocol: 'https',
           hostname: 'logo.moralis.io',
+        },
+        {
+          protocol: 'https',
+          hostname: 'cdn.moralis.io',
         }
       ],
     },
