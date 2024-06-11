@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { getTopTokens } from "@/utils/getTopTokens";
 import { GetTopERC20TokensByMarketCapOperationResponseJSON } from "@moralisweb3/common-evm-utils";
 import { TopTokensRow } from "@/app/components/TopTokensRow";
+import { isMoralisError } from "@moralisweb3/common-core";
+import Moralis from "moralis";
 
 export const TopTokensList = () => {
   const [tokenList, setTokenList] = useState<
@@ -11,8 +13,10 @@ export const TopTokensList = () => {
   useEffect(() => {
     (async () => {
       try {
+        await Moralis.start({
+          apiKey: process.env.NEXT_PUBLIC_MORALIS_API_KEY,
+        });
         const topTokens = await getTopTokens();
-        console.log("topTokens", topTokens);
         setTokenList(topTokens);
       } catch (error) {
         console.error("Error getting top tokens", error);
