@@ -5,7 +5,6 @@ export const getTokenTransaction = async ({
 }: {
   addressHash: string;
 }) => {
-  console.log("address hash", addressHash);
   try {
     const r = await Moralis.EvmApi.token.getTokenTransfers({
       chain: "0x1",
@@ -14,10 +13,8 @@ export const getTokenTransaction = async ({
       address: addressHash.toLowerCase(),
     });
     const data = r.raw;
-    console.log("data", data);
     return data;
   } catch (e) {
-    console.log("error");
     console.error(e);
   }
 };

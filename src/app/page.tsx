@@ -6,6 +6,7 @@ import { getTopTokens } from "@/utils/getTopTokens";
 import { TopTokensList } from "@/app/components/TopTokensList";
 import { SearchSection } from "@/app/components/SearchSection";
 import { TopTokensSection } from "@/app/components/TopTokensSection";
+import { LatestTxSection } from "@/app/components/LatestTxSection";
 
 export default function Home() {
   useEffect(() => {
@@ -26,7 +27,7 @@ export default function Home() {
       <div className="z-10 gap-3 w-[85%] items-center flex-col justify-between font-mono text-sm lg:flex">
         <div className=" flex md:flex-row xxs:flex-col w-full align-middle justify-center items-center gap-10">
           <TopTokensSection />
-          <TopTokensSection />
+          <LatestTxSection />
         </div>
       </div>
     </main>

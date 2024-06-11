@@ -6,7 +6,7 @@ export const SearchInput = () => {
   const [searchHash, setSearchHash] = useState("");
 
   return (
-    <div className="flex rounded rounded-xl focus:ring-[#2c2d2d] focus:ring shadow-[0px_0px_0px_1px_rgba(255,255,255,0.14)] flex-row bg-[#0A0A0A] items-center text-[#EDEDED] text-[1.5rem] font-semibold tracking-tight w-[90%]">
+    <div className="flex rounded-xl shadow-[0px_0px_0px_1px_rgba(255,255,255,0.14)] flex-row bg-[#0A0A0A] items-center text-[#EDEDED] text-[1.5rem] font-semibold tracking-tight w-[90%]">
       <input
         type="text"
         value={searchHash}
