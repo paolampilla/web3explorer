@@ -22,7 +22,7 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="flex bg-[#000] min-h-screen flex-col items-center justify-between p-24">
+    <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <div className="z-10 w-[100vw] gap-8 items-center flex-col justify-between font-mono text-sm lg:flex">
         <div className="grid-cols-2 flex align-middle justify-center items-center grid">
           <TopTokensSection />
